@@ -4,6 +4,7 @@ A comprehensive resource for students preparing for the Digital SAT, focusing on
 
 ## 📚 Overview
 
+p
 The Digital SAT Desmos Guide is designed to help students master the use of the Desmos calculator on the Digital SAT. Our goal is to provide detailed explanations, interactive examples, and practical strategies to improve math performance by 150-200+ points.
 
 ![Digital SAT Desmos Guide](https://place-hold.it/800x400/3eaf7c/ffffff&text=Digital%20SAT%20Desmos%20Guide&bold&fontsize=32)

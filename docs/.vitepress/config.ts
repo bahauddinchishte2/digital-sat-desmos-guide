@@ -4,6 +4,7 @@ export default defineConfig({
   lang: 'en-US',
   title: 'Digital SAT Desmos Guide',
   description: 'A comprehensive guide for using Desmos on the Digital SAT',
+  base: '/', // Ensure base path is correctly set
 
   head: [
     ['script', { src: 'https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6' }],

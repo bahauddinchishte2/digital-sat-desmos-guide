@@ -336,6 +336,8 @@ onUnmounted(() => {
   border-right: 2px solid var(--vp-c-text-3);
   border-bottom: 2px solid var(--vp-c-text-3);
   pointer-events: none;
+  border-radius: 2px;
+  transition: all 0.2s ease;
 }
 
 .resize-handle.bottom-left::after {
@@ -348,9 +350,30 @@ onUnmounted(() => {
   border-left: 2px solid var(--vp-c-text-3);
   border-bottom: 2px solid var(--vp-c-text-3);
   pointer-events: none;
+  border-radius: 2px;
+  transition: all 0.2s ease;
 }
 
 .resize-handle:hover::after {
   opacity: 1;
+  border-width: 3px;
+}
+
+/* Dark mode specific styles */
+:root.dark .resize-handle.bottom-right::after {
+  border-right: 2px solid var(--vp-c-gray-2);
+  border-bottom: 2px solid var(--vp-c-gray-2);
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+}
+
+:root.dark .resize-handle.bottom-left::after {
+  border-left: 2px solid var(--vp-c-gray-2);
+  border-bottom: 2px solid var(--vp-c-gray-2);
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+}
+
+:root.dark .resize-handle:hover::after {
+  border-width: 3px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 }
 </style>
