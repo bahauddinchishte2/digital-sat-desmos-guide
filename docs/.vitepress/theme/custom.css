@@ -1,0 +1,191 @@
+/* Custom styles for outline (right sidebar) */
+:root {
+  --vp-sidebar-width: 272px;
+  --vp-layout-max-width: 1440px;
+  --vp-font-family-base: 'Lato', sans-serif;
+}
+
+.VPDoc .aside {
+  position: relative;
+  width: var(--vp-sidebar-width);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.VPDoc .aside.collapsed {
+  transform: translateX(calc(var(--vp-sidebar-width) - 32px));
+}
+
+.VPDoc .aside .outline-marker {
+  width: 4px;
+}
+
+/* Add toggle button for right sidebar */
+.VPDoc .aside::before {
+  content: "≫";
+  position: absolute;
+  left: -20px;
+  top: 0;
+  cursor: pointer;
+  padding: 8px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.VPDoc .aside.collapsed::before {
+  transform: rotate(180deg);
+}
+
+/* Blue equation styling */
+.equation {
+  color: var(--vp-c-text-1);
+  padding: 0.3em 0.5em;
+  background-color: var(--vp-c-bg-soft);
+  border-radius: 4px;
+  font-family: 'MJXc-TeX-math-I', 'Cambria Math', Cambria, 'Computer Modern', 'Times New Roman', serif;
+  font-style: normal;
+  font-size: 1.4em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--vp-c-divider-light);
+}
+
+.equation var {
+  font-style: normal;
+  font-weight: 700;
+  font-family: inherit;
+  color: inherit;
+}
+
+/* Style all mathematical variables consistently */
+.equation [class*="variable"],
+.equation .variable,
+.equation var,
+.equation .math {
+  font-family: inherit;
+  font-style: normal !important;
+  font-weight: 700;
+}
+
+/* ===== Graph Background Effect ===== */
+/* Apply to all pages rather than just homepage */
+body {
+  position: relative;
+  background-color: var(--vp-c-bg);
+}
+
+/* Create a pseudo-element for the graph paper effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(var(--vp-c-text-1) 1px, transparent 1px),
+    linear-gradient(90deg, var(--vp-c-text-1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: center center;
+}
+
+/* Add a fade-out gradient mask */
+.VPContent {
+  position: relative;
+}
+
+.VPContent::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at center,
+    transparent 20%,
+    var(--vp-c-bg) 80%
+  );
+}
+
+/* Homepage graph effect styles - keep but modify to fit with global style */
+.VPHome {
+  position: relative;
+  overflow: hidden;
+}
+
+.VPHome::before,
+.VPHome::after {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background-image: 
+    linear-gradient(var(--vp-c-text-1) 2px, transparent 2px),
+    linear-gradient(90deg, var(--vp-c-text-1) 2px, transparent 2px);
+  background-size: 40px 40px;
+  background-position: center;
+  opacity: 0.05;
+  z-index: -1;
+}
+
+.VPHome::before {
+  top: -100px;
+  right: -100px;
+  transform: rotate(15deg);
+  mask-image: radial-gradient(ellipse at top right, black 20%, transparent 70%);
+}
+
+.VPHome::after {
+  top: -100px;
+  left: -100px;
+  transform: rotate(-15deg);
+  mask-image: radial-gradient(ellipse at top left, black 20%, transparent 70%);
+}
+
+/* Enhance hero section */
+.VPHero {
+  position: relative;
+  z-index: 1;
+}
+
+.VPHero .container {
+  backdrop-filter: blur(4px);
+  border-radius: 24px;
+  padding: 32px;
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--vp-c-bg-rgb), 0.8),
+    rgba(var(--vp-c-bg-rgb), 0.95)
+  );
+}
+
+/* Add some math symbols floating in the background */
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  20% { opacity: 0.3; }
+  80% { opacity: 0.3; }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+.math-symbol {
+  position: fixed;
+  bottom: -20px;
+  font-size: 30px;
+  color: var(--vp-c-brand-1);
+  opacity: 0;
+  z-index: -1;
+  animation: float 20s linear infinite;
+  pointer-events: none;
+}
+
+/* Add script to dynamically create math symbols */
